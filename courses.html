@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edunova Classes - Book Demo</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', Arial, sans-serif;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+}
+
+.container {
+    max-width: 550px;
+    margin: 40px auto;
+    background: rgba(20, 20, 20, 0.85);
+    padding: 30px;
+    border-radius: 22px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 25px 80px rgba(0,0,0,0.8);
+    color: #fff;
+    border: 1px solid rgba(255,215,0,0.2);
+    animation: fadeIn 1s ease-in-out;
+}
+
+.brand {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    background: linear-gradient(90deg, #ffd700, #ffcc70);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.tagline-top {
+    text-align: center;
+    font-size: 14px;
+    margin-bottom: 12px;
+    color: #ccc;
+}
+
+h1 {
+    text-align: center;
+    color: #ffffff;
+}
+
+.subline {
+    text-align: center;
+    font-size: 15px;
+    color: #ddd;
+    margin-bottom: 22px;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 14px;
+    margin: 10px 0 18px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.1);
+    outline: none;
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+    font-size: 14px;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #bbb;
+}
+
+input:focus, select:focus, textarea:focus {
+    box-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
+    border: 1px solid rgba(255,215,0,0.5);
+}
+
+button {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, #ffd700, #ffb347);
+    color: #000;
+    border: none;
+    border-radius: 14px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(255, 215, 0, 0.5);
+}
+
+.call-btn {
+    margin-top: 12px;
+    background: linear-gradient(135deg, #00c9ff, #92fe9d);
+    color: #000;
+}
+
+.highlight {
+    text-align: center;
+    margin-top: 14px;
+    font-size: 14px;
+    color: #ffd700;
+}
+
+.testimonial {
+    margin-top: 25px;
+    padding: 18px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 14px;
+    font-size: 14px;
+    color: #eee;
+    border-left: 3px solid #ffd700;
+}
+
+/* dropdown fix */
+select option {
+    background: #ffffff;
+    color: #000000;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(30px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+</style>
+
+<script>
+function toggleOther(select, inputId){
+    var input = document.getElementById(inputId);
+    if(select.value === "Others"){
+        input.style.display = "block";
+        input.required = true;
+    } else {
+        input.style.display = "none";
+        input.required = false;
+    }
+}
+
+function sendToWhatsApp(e){
+    e.preventDefault();
+
+    var name = document.getElementById("name").value;
+    var mobile = document.getElementById("mobile").value;
+
+    var classVal = document.getElementById("class").value;
+    var classOther = document.getElementById("classOther").value;
+
+    var boardVal = document.getElementById("board").value;
+    var boardOther = document.getElementById("boardOther").value;
+
+    var school = document.getElementById("school").value;
+    var subjects = document.getElementById("subjects").value;
+    var focus = document.getElementById("focus").value;
+
+    if(classVal === "Others") classVal = classOther;
+    if(boardVal === "Others") boardVal = boardOther;
+
+    var msg = "New Demo Request:%0A"
+        + "Name: " + name + "%0A"
+        + "Mobile: " + mobile + "%0A"
+        + "Class: " + classVal + "%0A"
+        + "Board: " + boardVal + "%0A"
+        + "School: " + school + "%0A"
+        + "Subjects: " + subjects + "%0A"
+        + "Focus: " + focus;
+
+    window.open("https://wa.me/918809236846?text=" + msg, "_blank");
+}
+</script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="brand">Edunova Classes</div>
+<div class="tagline-top">
+Concept-Based Learning. Practice-Oriented Understanding.
+</div>
+
+<h1>Book Free Demo</h1>
+
+<div class="subline">
+Get the perfect teacher with <b>Expert Matching + Free Replacement Guarantee</b>.<br>
+Give your child the personal attention they truly deserve.
+</div>
+
+<form onsubmit="sendToWhatsApp(event)">
+
+<input type="text" id="name" placeholder="Student Name" required>
+<input type="tel" id="mobile" placeholder="Mobile Number" required>
+
+<select id="class" onchange="toggleOther(this,'classOther')" required>
+<option value="">Select Class</option>
+<option>1</option><option>2</option><option>3</option><option>4</option>
+<option>5</option><option>6</option><option>7</option><option>8</option>
+<option>9</option><option>10</option><option>11</option><option>12</option>
+<option>JEE</option><option>NEET</option><option>Others</option>
+</select>
+
+<input type="text" id="classOther" placeholder="Enter Class" style="display:none;">
+
+<select id="board" onchange="toggleOther(this,'boardOther')" required>
+<option value="">Select Board</option>
+<option>CBSE</option><option>ICSE</option><option>NIOS</option>
+<option>State</option><option>Others</option>
+</select>
+
+<input type="text" id="boardOther" placeholder="Enter Board" style="display:none;">
+
+<input type="text" id="school" placeholder="School Name">
+<input type="text" id="subjects" placeholder="Subjects Required">
+<textarea id="focus" placeholder="Any specific focus area?"></textarea>
+
+<button type="submit">Book Demo</button>
+
+<a href="tel:8809236846">
+<button type="button" class="call-btn">Call Now</button>
+</a>
+
+<div class="highlight">
+✔ Verified Tutors | ✔ Free Demo | ✔ Replacement Guarantee
+</div>
+
+</form>
+
+<div class="testimonial">
+<b>What Parents Say:</b><br><br>
+⭐ “My child improved significantly within 2 months!”<br><br>
+⭐ “Very professional tutors and quick replacement support.”<br><br>
+⭐ “Best home tuition service, highly recommended!”
+</div>
+
+</div>
+
+</body>
+</html>
